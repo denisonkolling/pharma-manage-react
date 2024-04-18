@@ -101,15 +101,15 @@ function Cadastro() {
 						<Typography variant="h4" align="center" gutterBottom>
 							Cadastro
 						</Typography>
-            <Typography variant="body1" align="center" gutterBottom>
-						Preencha seus dados para registrar-se
-					</Typography>
+						<Typography variant="body1" align="center" gutterBottom>
+							Preencha seus dados para registrar-se
+						</Typography>
 						{cadastroSucesso && (
 							<Typography variant="h6" align="center" color="primary" gutterBottom>
 								Cadastro realizado com sucesso!
 							</Typography>
 						)}
-						<form onSubmit={handleCadastro} style={{width: '30rem'}}>
+						<form onSubmit={handleCadastro} style={{ width: '30rem' }}>
 							<TextField
 								label="Nome"
 								variant="outlined"
@@ -221,43 +221,10 @@ function Cadastro() {
 									},
 								}}
 							/>
-							<Button
-								type="submit"
-								variant="contained"
-								sx={{
-									backgroundColor: '#cab6fa',
-									color: '#ffffff',
-									'&:hover': {
-										backgroundColor: '#ab9be3',
-									},
-									'&:focus': {
-										backgroundColor: '#cab6fa',
-										boxShadow: '0 0 0 0.2rem rgba(78,115,223,.5)',
-									},
-									marginTop: '10px',
-								}}
-								fullWidth
-								disabled={!isFormValid()}>
+							<Button type="submit" variant="contained" sx={{mt: 2,}} fullWidth disabled={!isFormValid()}>
 								Cadastrar
 							</Button>
-							<Button
-								component={Link}
-								to="/"
-								variant="outlined"
-								sx={{
-									color: '#cab6fa',
-									borderColor: '#cab6fa',
-									'&:hover': {
-										backgroundColor: 'transparent',
-										borderColor: '#9370DB',
-									},
-									'&:focus': {
-										borderColor: '#9370DB',
-										boxShadow: '0 0 0 0.2rem rgba(78,115,223,.5)',
-									},
-									marginTop: '10px',
-								}}
-								fullWidth>
+							<Button component={Link} to="/" variant="outlined" sx={{ mt: 2 }} fullWidth>
 								Já possui uma conta? Clique aqui
 							</Button>
 						</form>

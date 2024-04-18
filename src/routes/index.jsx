@@ -16,7 +16,7 @@ function RoutesApp() {
 			<Routes>
 				<Route path="/cadastro" element={<Cadastro />} />
 				<Route path="/esqueci-senha" element={<EsqueciSenha />} />
-				<Route path="/" element={<Login />} />
+				<Route path="/login" element={<Login />} />
 				<Route path="/venda-medicamento" element={<VendaMedicamento />} />
 				<Route path="/produto/detalhamento" element={<Medicamentos />} />
 				<Route path="/produto/transferencia" element={<Medicamentos />} />

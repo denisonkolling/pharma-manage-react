@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { TextField, Button, Container, Typography, Box, IconButton, Link as MuiLink, CardContent, Card } from '@mui/material';
 import AuthContext from '../../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LoginIcon from '@mui/icons-material/Login';
 
 function Login() {
@@ -10,6 +10,7 @@ function Login() {
 	const { login, error } = useContext(AuthContext);
 	const [emailError, setEmailError] = useState('');
 	const [passwordError, setPasswordError] = useState('');
+	const navigate = useNavigate();
 
 	const handleLogin = (e) => {
 		e.preventDefault();
@@ -22,6 +23,8 @@ function Login() {
 
 		setEmail('');
 		setPassword('');
+
+		navigate('/produto/detalhamento');
 	};
 
 	const isFormValid = () => {
@@ -134,7 +137,7 @@ function Login() {
 							Esqueci minha senha
 						</Button>
 
-						<Typography variant="body1" align="center" sx={{ mt: 2, }}>
+						<Typography variant="body1" align="center" sx={{ mt: 2 }}>
 							Não tem uma conta?{' '}
 							<MuiLink component={Link} to="/cadastro" sx={{ color: '#777575', textDecoration: 'none', fontWeight: 'bold' }}>
 								Registre-se

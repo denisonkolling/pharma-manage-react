@@ -100,39 +100,10 @@ function EsqueciSenha() {
 						<Button
 							type="submit"
 							variant="contained"
-							sx={{
-								backgroundColor: '#cab6fa',
-								color: '#ffffff',
-								'&:hover': {
-									backgroundColor: '#ab9be3',
-								},
-								'&:focus': {
-									backgroundColor: '#cab6fa',
-									boxShadow: '0 0 0 0.2rem rgba(78,115,223,.5)',
-								},
-								marginTop: '10px',
-							}}
 							fullWidth>
 							Recuperar minha senha
 						</Button>
-						<Button
-							component={Link}
-							to="/"
-							variant="outlined"
-							sx={{
-								color: '#cab6fa',
-								borderColor: '#cab6fa',
-								'&:hover': {
-									backgroundColor: 'transparent',
-									borderColor: '#9370DB',
-								},
-								'&:focus': {
-									borderColor: '#9370DB',
-									boxShadow: '0 0 0 0.2rem rgba(78,115,223,.5)',
-								},
-								marginTop: '10px',
-							}}
-							fullWidth>
+						<Button component={Link} to="/login" variant="outlined" sx={{ mt: 1,}} fullWidth>
 							Voltar para o Login
 						</Button>
 					</form>
