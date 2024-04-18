@@ -6,7 +6,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Card from '@mui/material/Card';
 import MapModal from '../MapModal';
-import CustomButton from '../Button/CustomButton';
+import MapIcon from '@mui/icons-material/Map';
+import InventoryIcon from '@mui/icons-material/Inventory';
 
 const style = {
 	position: 'absolute',
@@ -63,10 +64,10 @@ function CardStyled(props) {
 			</Content>
 			<ButtonContainer>
 				<Button variant="contained" sx={{ m: 2, }} onClick={handleEstoqueClick}>
-					Consultar Estoque
+					<InventoryIcon />Consultar Estoque
 				</Button>
 				<Button variant="contained" sx={{ m: 2, width: '40%' }} onClick={handleOpen}>
-					Ver Mapa
+					<MapIcon />&nbsp;&nbsp;Ver Mapa
 				</Button>
 			</ButtonContainer>
 

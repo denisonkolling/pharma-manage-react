@@ -120,16 +120,6 @@ function Cadastro() {
 								error={nome.length > 0 && (nome.length < 5 || nome.length > 30)}
 								helperText={nome.length > 0 && (nome.length < 5 || nome.length > 30) ? 'O nome deve ter entre 5 e 30 caracteres' : ''}
 								onChange={(e) => handleInputChange(setNome, e.target.value)}
-								sx={{
-									'& .MuiInputLabel-root.Mui-focused': {
-										color: '#cab6fa',
-									},
-									'& .MuiOutlinedInput-root': {
-										'&.Mui-focused fieldset': {
-											borderColor: '#cab6fa',
-										},
-									},
-								}}
 							/>
 							<TextField
 								label="Email"
@@ -141,16 +131,6 @@ function Cadastro() {
 								error={email.length > 0 && (!email.includes('@') || !email.includes('.'))}
 								helperText={email.length > 0 && (!email.includes('@') || !email.includes('.')) ? 'Email inválido' : ''}
 								onChange={(e) => handleInputChange(setEmail, e.target.value)}
-								sx={{
-									'& .MuiInputLabel-root.Mui-focused': {
-										color: '#cab6fa',
-									},
-									'& .MuiOutlinedInput-root': {
-										'&.Mui-focused fieldset': {
-											borderColor: '#cab6fa',
-										},
-									},
-								}}
 							/>
 							<TextField
 								label="Senha"
@@ -163,16 +143,6 @@ function Cadastro() {
 								error={senha.length > 0 && senha.length < 6}
 								helperText={senha.length > 0 && senha.length < 6 ? 'A senha deve ter no mínimo 6 caracteres' : ''}
 								onChange={(e) => handleInputChange(setSenha, e.target.value)}
-								sx={{
-									'& .MuiInputLabel-root.Mui-focused': {
-										color: '#cab6fa',
-									},
-									'& .MuiOutlinedInput-root': {
-										'&.Mui-focused fieldset': {
-											borderColor: '#cab6fa',
-										},
-									},
-								}}
 							/>
 							<TextField
 								label="Confirmar Senha"
@@ -185,16 +155,6 @@ function Cadastro() {
 								error={confirmarSenha.length > 0 && senha !== confirmarSenha}
 								helperText={confirmarSenha.length > 0 && senha !== confirmarSenha ? 'As senhas não coincidem' : ''}
 								onChange={(e) => handleInputChange(setConfirmarSenha, e.target.value)}
-								sx={{
-									'& .MuiInputLabel-root.Mui-focused': {
-										color: '#cab6fa',
-									},
-									'& .MuiOutlinedInput-root': {
-										'&.Mui-focused fieldset': {
-											borderColor: '#cab6fa',
-										},
-									},
-								}}
 							/>
 							<TextField
 								label="Convite"
@@ -210,21 +170,11 @@ function Cadastro() {
 										: ''
 								}
 								onChange={(e) => handleInputChange(setConvite, e.target.value)}
-								sx={{
-									'& .MuiInputLabel-root.Mui-focused': {
-										color: '#cab6fa',
-									},
-									'& .MuiOutlinedInput-root': {
-										'&.Mui-focused fieldset': {
-											borderColor: '#cab6fa',
-										},
-									},
-								}}
 							/>
 							<Button type="submit" variant="contained" sx={{mt: 2,}} fullWidth disabled={!isFormValid()}>
 								Cadastrar
 							</Button>
-							<Button component={Link} to="/" variant="outlined" sx={{ mt: 2 }} fullWidth>
+							<Button component={Link} to="/login" variant="outlined" sx={{ mt: 2 }} fullWidth>
 								Já possui uma conta? Clique aqui
 							</Button>
 						</form>
