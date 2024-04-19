@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { TextField, Button, Container, Typography, Box, IconButton, Card, CardContent } from '@mui/material';
 import { Link } from 'react-router-dom';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import CustomIconBox from '../../components/CustomIconBox';
 
 function Cadastro() {
 	const [nome, setNome] = useState('');
@@ -77,21 +78,9 @@ function Cadastro() {
 			}}>
 			<CardContent>
 				<Card maxWidth="sm" sx={{ padding: '20px', borderRadius: '5px', position: 'relative', boxShadow: '0 1px 200px rgba(0,0,0,0.15)' }}>
-					<Box
-						sx={{
-							position: 'absolute',
-							top: '10px',
-							left: '10px',
-							backgroundColor: '#cab6fa',
-							width: '50px',
-							height: '50px',
-							borderRadius: '5px',
-							zIndex: 1,
-						}}>
-						<IconButton sx={{ color: '#ffffff', width: '100%', height: '100%' }}>
-							<AppRegistrationIcon />
-						</IconButton>
-					</Box>
+					<CustomIconBox>
+						<AppRegistrationIcon />
+					</CustomIconBox>
 					<Box
 						sx={{
 							padding: '20px',
@@ -171,7 +160,7 @@ function Cadastro() {
 								}
 								onChange={(e) => handleInputChange(setConvite, e.target.value)}
 							/>
-							<Button type="submit" variant="contained" sx={{mt: 2,}} fullWidth disabled={!isFormValid()}>
+							<Button type="submit" variant="contained" sx={{ mt: 2 }} fullWidth disabled={!isFormValid()}>
 								Cadastrar
 							</Button>
 							<Button component={Link} to="/login" variant="outlined" sx={{ mt: 2 }} fullWidth>

@@ -107,7 +107,7 @@ const Header = () => {
 						{theme === 'light' ? <Brightness4Icon /> : <DarkModeIcon />}
 					</IconButton>
 
-					<IconButton size="large" edge="end" color="inherit" component={Link} to="/">
+					<IconButton size="large" edge="end" color="inherit" component={Link} to="/login">
 						<LogoutIcon />
 					</IconButton>
 				</div>
