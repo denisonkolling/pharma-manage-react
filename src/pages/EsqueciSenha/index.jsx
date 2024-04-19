@@ -1,45 +1,33 @@
-import React, { useState, useRef } from 'react';
-import { TextField, Button, Container, Typography, Box, IconButton, CardContent, Card } from '@mui/material';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { TextField, Button, Typography, CardContent, Card } from '@mui/material';
 import PasswordIcon from '@mui/icons-material/Password';
+import CustomIconBox from '../../components/CustomIconBox';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { Link } from 'react-router-dom';
 
-function EsqueciSenha() {
-	const [email, setEmail] = useState('');
-	const [error, setError] = useState('');
+const schema = yup.object().shape({
+	email: yup.string().email('E-mail inválido').required('E-mail é obrigatório'),
+});
+
+function RecuperarSenha() {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({
+		resolver: yupResolver(schema),
+	});
 	const [successMessage, setSuccessMessage] = useState('');
-	const emailRef = useRef(null);
 
-	const handlePasswordRecovery = (e) => {
-		e.preventDefault();
-
-		const isValidEmail = validateEmail(email);
-		if (!isValidEmail) {
-			setError('E-mail inválido');
-			return;
-		}
-
+	const onSubmit = (data) => {
+		console.log(data.email);
 		setSuccessMessage('Um link para recuperação será enviado para o e-mail informado.');
 
 		setTimeout(() => {
 			setSuccessMessage('');
-		}, 3000);
-
-		setEmail('');
-		setError('');
-	};
-
-	const validateEmail = (email) => {
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		return emailRegex.test(email);
-	};
-
-	const handleInputChange = (setter, value) => {
-		setter(value);
-		if (value.trim() === '') {
-			setError('');
-		} else {
-			setError(validateEmail(value) ? '' : 'E-mail inválido');
-		}
+		}, 1500);
 	};
 
 	return (
@@ -51,59 +39,29 @@ function EsqueciSenha() {
 				height: '100vh',
 			}}>
 			<CardContent>
-				<Card maxWidth="sm" sx={{ padding: '20px', borderRadius: '5px', position: 'relative', boxShadow: '0 1px 200px rgba(0,0,0,0.15)' }}>
-					<Box
-						sx={{
-							position: 'absolute',
-							top: '10px',
-							left: '10px',
-							backgroundColor: '#cab6fa',
-							width: '50px',
-							height: '50px',
-							borderRadius: '5px',
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-							zIndex: 1,
-						}}>
-						<IconButton sx={{ color: '#ffffff' }}>
-							<PasswordIcon />
-						</IconButton>
-					</Box>
+				<Card sx={{ padding: '20px', borderRadius: '5px', position: 'relative', boxShadow: '0 1px 200px rgba(0,0,0,0.15)' }}>
+					<CustomIconBox>
+						<PasswordIcon />
+					</CustomIconBox>
 					<Typography variant="h4" align="center" gutterBottom>
 						Recuperação de Senha
 					</Typography>
+					{successMessage && <p style={{ color: '#4CAF50', textAlign: 'center',}}>{successMessage}</p>}
 
-					{successMessage && <p style={{ color: 'green', marginBottom: '10px' }}>{successMessage}</p>}
-					<form onSubmit={handlePasswordRecovery} style={{ width: '30rem' }}>
+					<form onSubmit={handleSubmit(onSubmit)} style={{ width: '30rem' }}>
 						<TextField
 							label="Email"
 							variant="outlined"
 							fullWidth
 							margin="normal"
-							inputRef={emailRef}
-							error={!!error}
-							helperText={error}
-							value={email}
-							onChange={(e) => handleInputChange(setEmail, e.target.value)}
-							sx={{
-								'& .MuiInputLabel-root.Mui-focused': {
-									color: error ? 'red' : '#cab6fa',
-								},
-								'& .MuiOutlinedInput-root': {
-									'&.Mui-focused fieldset': {
-										borderColor: error ? 'red' : '#cab6fa',
-									},
-								},
-							}}
+							{...register('email')}
+							error={!!errors.email}
+							helperText={errors.email ? errors.email.message : ''}
 						/>
-						<Button
-							type="submit"
-							variant="contained"
-							fullWidth>
+						<Button type="submit" variant="contained" fullWidth>
 							Recuperar minha senha
 						</Button>
-						<Button component={Link} to="/login" variant="outlined" sx={{ mt: 1,}} fullWidth>
+						<Button component={Link} to="/login" variant="outlined" sx={{ mt: 1 }} fullWidth>
 							Voltar para o Login
 						</Button>
 					</form>
@@ -113,4 +71,4 @@ function EsqueciSenha() {
 	);
 }
 
-export default EsqueciSenha;
+export default RecuperarSenha;

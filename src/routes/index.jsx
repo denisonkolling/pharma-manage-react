@@ -6,7 +6,7 @@ import Login from '../pages/Login';
 import { Farmacias } from '../pages/Farmacias';
 import AquisicaoMedicamento from '../pages/AquisicaoMedicamento';
 import CadastroMedicamento from '../pages/CadastroMedicamento';
-import EsqueciSenha from '../pages/EsqueciSenha';
+import RecuperarSenha from '../pages/RecuperarSenha';
 import CadastroFarmacia from '../pages/CadastroFarmacia';
 import EstoqueFarmacia from '../pages/EstoqueFarmacia';
 import Medicamentos from '../pages/Medicamentos';
@@ -15,7 +15,7 @@ function RoutesApp() {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/cadastro" element={<Cadastro />} />
-				<Route path="/esqueci-senha" element={<EsqueciSenha />} />
+				<Route path="/recuperar-senha" element={<RecuperarSenha />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/venda-medicamento" element={<VendaMedicamento />} />
 				<Route path="/produto/detalhamento" element={<Medicamentos />} />
